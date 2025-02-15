@@ -6,10 +6,4 @@ public class Product
 {
 
 
-    //navigation property
-
-    //foreign key
-    [ForeignKey("Category")]
-    public int CategoryId { get; set; } 
-    public Category Category { get; set; } = null!;
 }
