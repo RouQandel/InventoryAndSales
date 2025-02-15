@@ -1,4 +1,9 @@
-namespace Presantation
+using Microsoft.Extensions.DependencyInjection;
+using Presantation;
+using Microsoft.EntityFrameworkCore;
+using AccessDataLayer; // Replace with the namespace of your DbContext
+
+namespace Presentation
 {
     internal static class Program
     {
@@ -8,10 +13,27 @@ namespace Presantation
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            // Set up dependency injection
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+
+            // Build the service provider
+            using var serviceProvider = services.BuildServiceProvider();
+
+            // Run the application
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(serviceProvider.GetRequiredService<Form1>());
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            // Register your DbContext
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer("InventorySales"));
+
+            // Register your forms and other services
+            services.AddTransient<Form1>();
+            // services.AddTransient<OtherForm>(); // Add other forms if needed
         }
     }
 }
