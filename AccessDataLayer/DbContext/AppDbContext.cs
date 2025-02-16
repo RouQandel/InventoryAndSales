@@ -1,5 +1,10 @@
-﻿namespace AccessDataLayer.DbContext;
+﻿using AccessDataLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext
+namespace AccessDataLayer;
+
+public class AppDbContext : DbContext
 {
+    public DbSet<Product> Products { get; set; }
+   
 }
