@@ -8,6 +8,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 {
     public void Configure(EntityTypeBuilder<Product> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(o => o.ProductId);
+
     }
 }
