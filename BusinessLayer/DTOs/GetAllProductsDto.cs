@@ -1,5 +1,6 @@
 ﻿namespace BusinessLayer.DTOs;
 
-public class ProductDTO
+public class GetAllProductsDto
 {
+
 }
