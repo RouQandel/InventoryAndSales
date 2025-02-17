@@ -6,6 +6,7 @@ namespace AccessDataLayer.Entities;
 
 public class Product
 {
+
     
     [Key]
     public int ProductId { get; set; } // Primary Key
@@ -19,6 +20,8 @@ public class Product
     public CategoryEnum? Category { get; set; } //CategoryEnum type and can be Null
 
 
-    
+    // Navigation Property
+
     public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+
 }
