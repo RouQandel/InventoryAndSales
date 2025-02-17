@@ -24,4 +24,9 @@ public class Product
 
     public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
 
+    [ForeignKey ("Supplier")]
+    public int SupId { get; set; }
+    public Supplier Supplier { get; set; } = null!;     
+
+
 }

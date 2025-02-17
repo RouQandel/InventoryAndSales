@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AccessDataLayer.Entities
 {
    public class Supplier
    {
-
+        [Key]
+        public int SupId { get; set; }
+        public string SupName { get; set; } = string.Empty;
 
         [ForeignKey("Product")]
         public required int ProductId { get; set; } //foreign key for 1 to many relation with product (make it in fluit API also <3 ) 
