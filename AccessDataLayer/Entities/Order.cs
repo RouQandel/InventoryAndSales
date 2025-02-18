@@ -12,7 +12,6 @@ public class Order
     public int TotalAmount { get; set; }
 
     // Navigation Property
-
     public ICollection<Product> Products { get; set; } = new HashSet<Product>();
 
     [ForeignKey("Customer")]

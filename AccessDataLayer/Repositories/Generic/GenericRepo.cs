@@ -9,7 +9,7 @@ namespace AccessDataLayer.Repositories;
 public class GenericRepo<T>(AppDbContext _DbContext , ILogger<GenericRepo<T>> logger) : IGetbyIdRepo<T>, IGetAllRepo<T>, IAddRepo<T>, IUpdateRepo<T>
     where T : class
 {
-
+    private readonly AppDbContext _DbContext = _DbContext;
     private readonly ILogger<GenericRepo<T>> _logger = logger;
 
     public async Task<T> Add(T entity)

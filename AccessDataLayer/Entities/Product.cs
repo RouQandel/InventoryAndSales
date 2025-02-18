@@ -11,9 +11,9 @@ public class Product
     [Key]
     public int ProductId { get; set; } // Primary Key
     
-    public required string ProductName { get; set; } //Must have Name 
+    public string ProductName { get; set; } = string.Empty; //Must have Name 
 
-    public required long UnitPrice { get; set; } //must be long 
+    public  long UnitPrice { get; set; } //must be long 
 
     public int QuantityInStock { get; set; } = 0; //if no input =0 by default
 
