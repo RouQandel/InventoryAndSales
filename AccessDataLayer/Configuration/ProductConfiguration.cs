@@ -26,8 +26,12 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
           .HasDefaultValue(CategoryEnum.Other.ToString()) // Set default value as "Other"
           .IsRequired(false); // Optional property
 
-        builder.HasOne(s => s.Supplier)
-           .WithMany()
-           .HasForeignKey(s => s.SupId);
+       builder.HasMany(p => p.Orders)
+              .WithMany(o => o.Products)
+              .UsingEntity(j => j.ToTable("ProductOrders"));
+
+        builder.HasOne(p => p.Supplier)
+               .WithMany(s => s.Products)
+               .HasForeignKey(p => p.SupId);
     }
 }

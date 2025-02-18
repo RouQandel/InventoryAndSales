@@ -1,13 +1,18 @@
-﻿using AccessDataLayer.Entities;
+﻿using AccessDataLayer.Configuration;
+using AccessDataLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace AccessDataLayer;
 
 public class AppDbContext : DbContext
 {
- 
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Server=ROU\\SQLSERVER;Database=Inventory_Sales;Trusted_Connection=True;TrustServerCertificate=True;");
+    }
     public DbSet<Product> Products { get; set; } 
     public DbSet<Order> Orders { get; set; } 
     public DbSet<Customer> Customers { get; set; }
@@ -15,8 +20,10 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfiguration(new ProductConfiguration());
+        modelBuilder.ApplyConfiguration(new CustomerConfguration());
+        modelBuilder.ApplyConfiguration(new OrderConfiguration());
     }
 
 }

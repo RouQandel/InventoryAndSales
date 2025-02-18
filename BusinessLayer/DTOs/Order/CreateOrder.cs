@@ -5,7 +5,8 @@ namespace BusinessLayer;
 public class CreateOrder
 {
      public string CustomerName { get; set; }
-    public int TotalAmount { get; set; }
+     public int TotalAmount { get; set; }
+     public List<Product>  Products { get; set; } = new List<Product>();
 }
 public static class CreateOrderMappingExtensions
 {
@@ -14,7 +15,8 @@ public static class CreateOrderMappingExtensions
         return new CreateOrder
         {
             CustomerName = order.Customer.CustomerName,
-            TotalAmount = order.TotalAmount
+            TotalAmount = order.TotalAmount,
+            Products = order.Products.ToList()
         };
     }
 }

@@ -5,9 +5,9 @@ namespace BusinessLayer;
 
 public class UpdateProduct
 {
-    public int ProductId { get; set; }
+    public long ProductId { get; set; }
     public string ProductName { get; set; } = string.Empty;
-    public long UnitPrice { get; set; }
+    public decimal UnitPrice { get; set; }
     public int QuantityInStock { get; set; }
     public CategoryEnum? Category { get; set; }
     public int SupId { get; set; }

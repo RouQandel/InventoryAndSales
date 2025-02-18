@@ -5,7 +5,7 @@ namespace BusinessLayer;
 public class DeleteProductDto
 {
     public string ProductName { get; set; }
-    public int ProductId { get; set; }
+    public long ProductId { get; set; }
 }
 public static class DeleteMappingExtensions
 {

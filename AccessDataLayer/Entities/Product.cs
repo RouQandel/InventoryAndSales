@@ -9,11 +9,11 @@ public class Product
 
     
     [Key]
-    public int ProductId { get; set; } // Primary Key
+    public long ProductId { get; set; } // Primary Key
     
     public string ProductName { get; set; } = string.Empty; //Must have Name 
 
-    public  long UnitPrice { get; set; } //must be long 
+    public  decimal UnitPrice { get; set; } //must be decimal 
 
     public int QuantityInStock { get; set; } = 0; //if no input =0 by default
 

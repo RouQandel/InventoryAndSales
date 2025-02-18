@@ -4,9 +4,9 @@ namespace BusinessLayer;
 
 public class GetAllProductsDto
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string ProductName { get; set; } = string.Empty;
-    public long UnitPrice { get; set; }
+    public decimal UnitPrice { get; set; }
     public int QuantityInStock { get; set; }
     public string Category { get; set; } = string.Empty;
     public string SupplierName { get; set; } = string.Empty;
