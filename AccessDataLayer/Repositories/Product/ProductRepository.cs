@@ -1,50 +1,66 @@
 ﻿namespace AccessDataLayer.Repositories.Product;
-
-using System.Reflection.Metadata.Ecma335;
 using AccessDataLayer.Entities;
 using AccessDataLayer.Enums;
+using Microsoft.EntityFrameworkCore;
 
 public class ProductRepository
 {
+    private readonly AppDbContext _dbContext;
 
-    ICollection<Product> ProductsCollection = new HashSet<Product>();
-
-    public ICollection<Product> GetAll() => ProductsCollection;
-
-    public Product? GetById(long _id)=> ProductsCollection.FirstOrDefault(p => p.ProductId == _id);
-
-    public void AddProduct(Product product)
+    public ProductRepository(AppDbContext dbContext)
     {
-        ProductsCollection.Add(new Product
+        _dbContext = dbContext;
+    }
+
+    public async Task<List<Product>> GetAllAsync() => await _dbContext.Products.ToListAsync();
+
+    public async Task<Product?> GetByIdAsync(long id) => await _dbContext.Products.FindAsync(id);
+
+    public async Task AddProductAsync(Product product)
+    {
+        if (product == null) throw new ArgumentNullException(nameof(product));
+
+        var newProduct = new Product
         {
-            ProductName = product.ProductName??string.Empty,
+            ProductName = product.ProductName ?? string.Empty,
             UnitPrice = product.UnitPrice,
             QuantityInStock = product.QuantityInStock,
-            Category = product.Category?? CategoryEnum.Other,
+            Category = product.Category ?? CategoryEnum.Other,
             Orders = product.Orders
-        });
+        };
 
-    }
-     public void UpdateProductById(long _id, Product product)
-    {
-        var p = ProductsCollection.FirstOrDefault(p => p.ProductId == _id);
-        if (p == null)
-            return;
-        p.ProductName = product.ProductName;
-        p.UnitPrice = product.UnitPrice;
-        p.QuantityInStock = product.QuantityInStock;
-        p.Category = product.Category;
-        p.Orders = product.Orders;
+        await _dbContext.Products.AddAsync(newProduct);
     }
 
-    public void DeleteProduct(long _id)
+    public async Task<bool> UpdateProductByIdAsync(long id, Product updatedProduct)
     {
-        ProductsCollection.Remove(ProductsCollection.FirstOrDefault(p => p.ProductId == _id));
+        var product = await _dbContext.Products.FindAsync(id);
+        if (product == null) return false;
+
+        product.ProductName = updatedProduct.ProductName;
+        product.UnitPrice = updatedProduct.UnitPrice;
+        product.QuantityInStock = updatedProduct.QuantityInStock;
+        product.Category = updatedProduct.Category;
+        product.Orders = updatedProduct.Orders;
+
+        _dbContext.Products.Update(product);
+        return true;
     }
 
-    public long GetMaxId()
+    public async Task<bool> DeleteProductAsync(long id)
     {
-        return ProductsCollection.Any() ? ProductsCollection.Max(p => p.ProductId) : 0;
+        var product = await _dbContext.Products.FindAsync(id);
+        if (product == null) return false;
+
+        _dbContext.Products.Remove(product);
+        return true;
     }
+
+    public async Task<long> GetMaxIdAsync()
+    {
+        return await _dbContext.Products.AnyAsync() ?
+               await _dbContext.Products.MaxAsync(p => p.ProductId) : 0;
+    }
+
+    public async Task<int> SaveChangesAsync() => await _dbContext.SaveChangesAsync();
 }
-

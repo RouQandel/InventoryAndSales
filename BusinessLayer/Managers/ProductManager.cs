@@ -1,54 +1,52 @@
 ﻿using AccessDataLayer.Entities;
-using AccessDataLayer.Repositories;
 using AccessDataLayer.Repositories.Product;
 using BusinessLayer.DTOs.Product;
 
+
 namespace BusinessLayer.Managers;
 
-public class ProductManage
+public class ProductManager
 {
-    private readonly ProductRepository _productRepository = new ProductRepository();
+    private readonly ProductRepository _productRepository;
 
-    public  List<GetAllProductsDto> GetAll()
+    public ProductManager(ProductRepository productRepository)
     {
-        var products =  _productRepository.GetAll();
-        // Business Logic
-
-        // Mapping   Entity  ====>  DTO
-
-        var productDtoList = products
-       .Select(p => new GetAllProductsDto
-       {
-           Id = p.ProductId,
-           ProductName = p.ProductName,
-           UnitPrice = p.UnitPrice,
-           QuantityInStock = p.QuantityInStock,
-           Category = p.Category.ToString(),
-           SupplierName = p.Supplier.SupName
-
-       })
-       .ToList();
-
-        return   productDtoList;
+        _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
     }
-    public GetProductByIdDto? GetById(int id)
+
+    public async Task<List<GetAllProductsDto>> GetAllAsync()
     {
-        var product = _productRepository.GetById(id);
-        var productDto = product == null ? null : new GetProductByIdDto
+        var products = await _productRepository.GetAllAsync();
+
+        // Mapping: Entity → DTO
+        return products.Select(p => new GetAllProductsDto
+        {
+            Id = p.ProductId,
+            ProductName = p.ProductName,
+            UnitPrice = p.UnitPrice,
+            QuantityInStock = p.QuantityInStock,
+            Category = p.Category.ToString(),
+            SupplierName = p.Supplier?.SupName ?? "Unknown" // Handling null suppliers
+        }).ToList();
+    }
+
+    public async Task<GetProductByIdDto?> GetByIdAsync(int id)
+    {
+        var product = await _productRepository.GetByIdAsync(id);
+
+        if (product == null) return null;
+
+        return new GetProductByIdDto
         {
             Id = product.ProductId,
             ProductName = product.ProductName,
             Price = product.UnitPrice,
             CategoryNane = product.Category.ToString()
-
         };
-        return productDto;
     }
 
-    public void AddProduct(CreateProductDto productDto)
+    public async Task AddProductAsync(CreateProductDto productDto)
     {
-        // mapping  dto   -->  entity
-
         var product = new Product
         {
             ProductName = productDto.ProductName,
@@ -58,23 +56,39 @@ public class ProductManage
             SupId = productDto.SupId
         };
 
-        _productRepository.AddProduct(product);
+        await _productRepository.AddProductAsync(product);
+        await _productRepository.SaveChangesAsync();
     }
-    public void UpdateProduct(UpdateProductDto productDto)
+
+    public async Task<bool> UpdateProductAsync(UpdateProductDto productDto)
     {
-        var product = new Product
-        {
-            ProductId = productDto.ProductId,
-            ProductName = productDto.ProductName,
-            UnitPrice = productDto.UnitPrice,
-            QuantityInStock = productDto.QuantityInStock,
-            Category = productDto.Category,
-            SupId = productDto.SupId
-        };
+        var existingProduct = await _productRepository.GetByIdAsync(productDto.ProductId);
+        if (existingProduct == null) return false; 
 
-        _productRepository.UpdateProductById(product.ProductId, product);
+   
+        existingProduct.ProductName = productDto.ProductName;
+        existingProduct.UnitPrice = productDto.UnitPrice;
+        existingProduct.QuantityInStock = productDto.QuantityInStock;
+        existingProduct.Category = productDto.Category;
+        existingProduct.SupId = productDto.SupId;
+
+       
+        await _productRepository.UpdateProductByIdAsync(existingProduct.ProductId, existingProduct);
+
+        await _productRepository.SaveChangesAsync();
+
+        return true;
     }
-    public void DeleteProduct(long id) => _productRepository.DeleteProduct(id);
-    
 
+
+    public async Task<bool> DeleteProductAsync(long id)
+    {
+        var product = await _productRepository.GetByIdAsync(id);
+        if (product == null) return false;
+
+        await _productRepository.DeleteProductAsync(id);
+        await _productRepository.SaveChangesAsync();
+
+        return true;
+    }
 }

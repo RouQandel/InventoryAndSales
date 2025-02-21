@@ -2,5 +2,5 @@
 
 public interface IDeteleRepo<T> where T : class
 {
-    void Delete(long id);
+    Task<bool> DeleteAsync(long id);
 }

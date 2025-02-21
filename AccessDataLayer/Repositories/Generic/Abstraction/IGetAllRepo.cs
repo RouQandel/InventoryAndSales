@@ -4,7 +4,8 @@ namespace AccessDataLayer.Repositories.Generic.Abstraction;
 
 public interface IGetAllRepo<T> where T : class
 {
-    Task<IReadOnlyList<T>> GetAll(Expression<Func<T, bool>> filter = null,
-             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null);
+    Task<IReadOnlyList<T>> GetAllAsync(
+          Expression<Func<T, bool>>? filter = null,
+          Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null);
 
 }

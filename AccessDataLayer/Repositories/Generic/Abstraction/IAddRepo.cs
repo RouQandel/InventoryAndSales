@@ -2,5 +2,5 @@
 
 public interface IAddRepo<T> where T : class
 {
-    Task<T> Add(T entity);
+    Task<T?> AddAsync(T entity);
 }

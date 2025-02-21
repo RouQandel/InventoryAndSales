@@ -2,5 +2,5 @@
 
 public interface ISaveRepo<T> where T : class
 {
-    Task SaveChangeAsync();
+    Task SaveChangesAsync();
 }

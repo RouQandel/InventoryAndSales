@@ -2,5 +2,5 @@
 
 public interface IUpdateRepo<T> where T : class
 {
-    T Update(T entity);
+    Task<T?> UpdateAsync(T entity);
 }

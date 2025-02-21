@@ -2,6 +2,6 @@
 
 public interface IGetbyIdRepo<T>
 {
-    Task<T?> GetById(long id);
+    Task<T?> GetByIdAsync(long id);
 }
 

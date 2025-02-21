@@ -6,54 +6,75 @@ using System.Linq.Expressions;
 
 namespace AccessDataLayer.Repositories;
 
-public class GenericRepo<T>(AppDbContext dbContext , ILogger<GenericRepo<T>> logger) : IDeteleRepo<T>, IGetbyIdRepo<T>, IGetAllRepo<T>, IAddRepo<T>, IUpdateRepo<T>
+public class GenericRepo<T> : IDeteleRepo<T>, IGetbyIdRepo<T>, IGetAllRepo<T>, IAddRepo<T>, IUpdateRepo<T>, ISaveRepo<T>
     where T : class
 {
+    private readonly AppDbContext _dbContext;
+    private readonly ILogger<GenericRepo<T>> _logger;
 
-    private readonly AppDbContext _DbContext = dbContext;
-    private readonly ILogger<GenericRepo<T>> _logger = logger ;
-
-    public async Task<T> Add(T entity)
+    public GenericRepo(AppDbContext dbContext, ILogger<GenericRepo<T>> logger)
     {
-        if (entity is null) return null;
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    }
+
+    public async Task<T?> AddAsync(T entity)
+    {
+        if (entity is null) throw new ArgumentNullException(nameof(entity));
+
         try
         {
-            await _DbContext.Set<T>().AddAsync(entity);
+            await _dbContext.Set<T>().AddAsync(entity);
             return entity;
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "{Repo} Add method error", typeof(T));
-
+            _logger.LogError(ex, "{Repo} Add method error: {EntityType}", typeof(T), entity);
             return null;
         }
     }
 
-    public void Delete(long id) => _DbContext.Set<T>().Remove(GetById(id).Result);
-
-    public async Task<IReadOnlyList<T>> GetAll
-        (Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
+    public async Task<bool> DeleteAsync(long id)
     {
-        IQueryable<T> query = _DbContext.Set<T>();
+        var entity = await GetByIdAsync(id);
+        if (entity == null) return false;
 
-        if (filter is not null) query = query.Where(filter);
-
-        if (orderBy != null)
-        {
-            return await orderBy(query).ToListAsync();
-        }
-        else
-        {
-            return await query.AsNoTracking().ToListAsync();
-        }
+        _dbContext.Set<T>().Remove(entity);
+        return true;
     }
 
-    public async Task<T?> GetById(long id) => await _DbContext.Set<T>().FindAsync(id); 
+    public async Task<IReadOnlyList<T>> GetAllAsync(
+        Expression<Func<T, bool>>? filter = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
+    {
+        IQueryable<T> query = _dbContext.Set<T>();
 
-    public  T Update(T entity) 
-    { 
-        _DbContext.Set<T>().Update(entity);
-               return  entity;
+        if (filter is not null)
+            query = query.Where(filter);
+
+        return orderBy != null
+            ? await orderBy(query).ToListAsync()
+            : await query.AsNoTracking().ToListAsync();
     }
 
+    public async Task<T?> GetByIdAsync(long id) => await _dbContext.Set<T>().FindAsync(id);
+
+    public async Task SaveChangesAsync() => await _dbContext.SaveChangesAsync();
+
+
+    public async Task<T?> UpdateAsync(T entity)
+    {
+        if (entity is null) return null;
+
+        try
+        {
+            _dbContext.Set<T>().Update(entity);
+            return entity;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "{Repo} Update method error: {EntityType}", typeof(T));
+            return null;
+        }
+    }
 }
