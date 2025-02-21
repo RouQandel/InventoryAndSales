@@ -6,12 +6,12 @@ using System.Linq.Expressions;
 
 namespace AccessDataLayer.Repositories;
 
-public class GenericRepo<T> : IGetbyIdRepo<T>, IGetAllRepo<T>, IAddRepo<T>, IUpdateRepo<T>
+public class GenericRepo<T>(AppDbContext dbContext , ILogger<GenericRepo<T>> logger) : IDeteleRepo<T>, IGetbyIdRepo<T>, IGetAllRepo<T>, IAddRepo<T>, IUpdateRepo<T>
     where T : class
 {
 
-    private readonly AppDbContext _DbContext;
-    private readonly ILogger<GenericRepo<T>> _logger ;
+    private readonly AppDbContext _DbContext = dbContext;
+    private readonly ILogger<GenericRepo<T>> _logger = logger ;
 
     public async Task<T> Add(T entity)
     {
@@ -28,6 +28,9 @@ public class GenericRepo<T> : IGetbyIdRepo<T>, IGetAllRepo<T>, IAddRepo<T>, IUpd
             return null;
         }
     }
+
+    public void Delete(long id) => _DbContext.Set<T>().Remove(GetById(id).Result);
+
     public async Task<IReadOnlyList<T>> GetAll
         (Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
     {
@@ -45,7 +48,7 @@ public class GenericRepo<T> : IGetbyIdRepo<T>, IGetAllRepo<T>, IAddRepo<T>, IUpd
         }
     }
 
-    public async Task<T?> GetById(int id) => await _DbContext.Set<T>().FindAsync(id); 
+    public async Task<T?> GetById(long id) => await _DbContext.Set<T>().FindAsync(id); 
 
     public  T Update(T entity) 
     { 

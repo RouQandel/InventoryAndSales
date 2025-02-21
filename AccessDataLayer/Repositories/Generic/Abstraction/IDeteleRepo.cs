@@ -2,5 +2,5 @@
 
 public interface IDeteleRepo<T> where T : class
 {
-    void Delete(int id);
+    void Delete(long id);
 }
