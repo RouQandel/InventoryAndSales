@@ -11,7 +11,7 @@ public class ProductRepository
 
     public ICollection<Product> GetAll() => ProductsCollection;
 
-    public Product? GetById(int _id)=> ProductsCollection.FirstOrDefault(p => p.ProductId == _id);
+    public Product? GetById(long _id)=> ProductsCollection.FirstOrDefault(p => p.ProductId == _id);
 
     public void AddProduct(Product product)
     {
@@ -25,7 +25,7 @@ public class ProductRepository
         });
 
     }
-     public void UpdateProductById(int _id, Product product)
+     public void UpdateProductById(long _id, Product product)
     {
         var p = ProductsCollection.FirstOrDefault(p => p.ProductId == _id);
         if (p == null)
@@ -37,8 +37,14 @@ public class ProductRepository
         p.Orders = product.Orders;
     }
 
-    public void DeleteProduct(int _id)
+    public void DeleteProduct(long _id)
     {
         ProductsCollection.Remove(ProductsCollection.FirstOrDefault(p => p.ProductId == _id));
     }
+
+    public long GetMaxId()
+    {
+        return ProductsCollection.Any() ? ProductsCollection.Max(p => p.ProductId) : 0;
+    }
 }
+

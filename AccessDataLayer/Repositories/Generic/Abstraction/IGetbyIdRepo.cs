@@ -1,6 +1,7 @@
 ﻿namespace AccessDataLayer.Repositories.Generic.Abstraction;
 
-public interface IGetbyIdRepo<T> where T : class
+public interface IGetbyIdRepo<T>
 {
     Task<T?> GetById(int id);
 }
+

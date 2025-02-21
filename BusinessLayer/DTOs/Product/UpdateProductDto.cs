@@ -3,7 +3,7 @@ using AccessDataLayer.Enums;
 
 namespace BusinessLayer;
 
-public class UpdateProduct
+public class UpdateProductDto
 {
     public long ProductId { get; set; }
     public string ProductName { get; set; } = string.Empty;
@@ -14,9 +14,9 @@ public class UpdateProduct
 }
 public static class UpdateMappingExtensions
 {
-    public static UpdateProduct ToUpdateProduct(this Product product)
+    public static UpdateProductDto ToUpdateProduct(this Product product)
     {
-        return new UpdateProduct
+        return new UpdateProductDto
         {
             ProductId = product.ProductId,
             ProductName = product.ProductName,
