@@ -9,7 +9,7 @@ public class CreateProductDto
     public long UnitPrice { get; set; }
     public int QuantityInStock { get; set; }
     public CategoryEnum? Category { get; set; }
-    public int SupId { get; set; }
+    public string SupName { get; set; }
 
 }
 public static class CreateMappingExtensions
