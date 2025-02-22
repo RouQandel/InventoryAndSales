@@ -55,5 +55,32 @@ namespace Presantation
 			form.Show();
 			this.Close();
 		}
+
+		private void label9_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+			{
+				
+				folderDialog.Description = "Select a folder to save files:";
+
+				
+				folderDialog.RootFolder = Environment.SpecialFolder.Desktop;
+
+				
+				if (folderDialog.ShowDialog() == DialogResult.OK)
+				{
+					
+					string selectedPath = folderDialog.SelectedPath;
+
+					
+					MessageBox.Show("Selected Folder: " + selectedPath);
+				}
+			}
+		}
 	}
 }
