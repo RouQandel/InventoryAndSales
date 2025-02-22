@@ -10,20 +10,5 @@ public class UpdateProductDto
     public decimal UnitPrice { get; set; }
     public int QuantityInStock { get; set; }
     public CategoryEnum? Category { get; set; }
-    public long SupId { get; set; }
-}
-public static class UpdateMappingExtensions
-{
-    public static UpdateProductDto ToUpdateProduct(this Product product)
-    {
-        return new UpdateProductDto
-        {
-            ProductId = product.ProductId,
-            ProductName = product.ProductName,
-            UnitPrice = product.UnitPrice,
-            QuantityInStock = product.QuantityInStock,
-            Category = product.Category,
-            SupId = product.SupId
-        };
-    }
+    public string SupName { get; set; }
 }
