@@ -15,7 +15,9 @@ public class AppDbContext : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+
         optionsBuilder.UseSqlServer("Server=KHALED_ALTABEY;Database=Inventory_Sales;Trusted_Connection=True;TrustServerCertificate=True;");
+
     }
     public DbSet<Product> Products { get; set; } 
     public DbSet<Order> Orders { get; set; } 

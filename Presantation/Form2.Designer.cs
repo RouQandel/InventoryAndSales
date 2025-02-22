@@ -22,6 +22,7 @@
 
 		#region Windows Form Designer generated code
 
+
 		/// <summary>
 		///  Required method for Designer support - do not modify
 		///  the contents of this method with the code editor.
@@ -446,6 +447,7 @@
 		#endregion
 
 		private DataGridView dataGridView1;
+
 		private GroupBox groupBox1;
 		private GroupBox groupBox2;
 		private GroupBox groupBox3;
@@ -453,6 +455,7 @@
 		private Button button2;
 		private Button button3;
 		private Label label1;
+
 		private TextBox textBox3;
 		private TextBox textBox2;
 		private TextBox textBox1;
@@ -467,14 +470,17 @@
 		private Label label8;
 		private Label label7;
 		private ComboBox comboBox2;
+
 		private TextBox textBox8;
 		private TextBox textBox7;
 		private TextBox textBox6;
 		private TextBox textBox9;
 		private Label label11;
+
 		private Button button4;
 		private Button button5;
 		private Label label9;
 		private Label label5;
+
 	}  
 }

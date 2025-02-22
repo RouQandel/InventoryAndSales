@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+
 			label2 = new Label();
 			label3 = new Label();
 			label4 = new Label();
@@ -40,6 +41,7 @@
 			button1 = new Button();
 			button2 = new Button();
 			button3 = new Button();
+
 			pictureBox1 = new PictureBox();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
@@ -51,12 +53,14 @@
 			label2.Location = new Point(69, 83);
 			label2.Name = "label2";
 			label2.Size = new Size(335, 46);
+
 			label2.TabIndex = 1;
 			label2.Text = " Key Features:";
 			// 
 			// label3
 			// 
 			label3.AutoSize = true;
+
 			label3.Font = new Font("SansSerif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 2);
 			label3.ForeColor = Color.White;
 			label3.Location = new Point(114, 151);
@@ -71,6 +75,7 @@
 			label4.Font = new Font("SansSerif", 16.1999989F);
 			label4.ForeColor = Color.White;
 			label4.Location = new Point(164, 205);
+
 			label4.Name = "label4";
 			label4.Size = new Size(1173, 45);
 			label4.TabIndex = 3;
@@ -79,9 +84,11 @@
 			// 
 			// label5
 			// 
+
 			label5.Font = new Font("SansSerif", 16.1999989F);
 			label5.ForeColor = Color.White;
 			label5.Location = new Point(164, 251);
+
 			label5.Name = "label5";
 			label5.Size = new Size(1173, 45);
 			label5.TabIndex = 4;
@@ -89,9 +96,11 @@
 			// 
 			// label6
 			// 
+
 			label6.Font = new Font("SansSerif", 16.1999989F);
 			label6.ForeColor = Color.White;
 			label6.Location = new Point(164, 295);
+
 			label6.Name = "label6";
 			label6.Size = new Size(1173, 45);
 			label6.TabIndex = 5;
@@ -99,9 +108,11 @@
 			// 
 			// label7
 			// 
+
 			label7.Font = new Font("SansSerif", 16.1999989F);
 			label7.ForeColor = Color.White;
 			label7.Location = new Point(164, 340);
+
 			label7.Name = "label7";
 			label7.Size = new Size(1173, 45);
 			label7.TabIndex = 6;
@@ -110,6 +121,7 @@
 			// label8
 			// 
 			label8.AutoSize = true;
+
 			label8.Font = new Font("SansSerif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 2);
 			label8.ForeColor = Color.White;
 			label8.Location = new Point(114, 395);
@@ -130,6 +142,7 @@
 			// 
 			// label10
 			// 
+
 			label10.Font = new Font("SansSerif", 16.1999989F);
 			label10.ForeColor = Color.White;
 			label10.Location = new Point(164, 487);
@@ -140,6 +153,7 @@
 			// 
 			// button1
 			// 
+
 			button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			button1.BackColor = Color.DodgerBlue;
 			button1.FlatStyle = FlatStyle.Flat;
@@ -151,10 +165,12 @@
 			button1.TabIndex = 10;
 			button1.Text = "Products";
 			button1.UseVisualStyleBackColor = false;
+
 			button1.Click += button1_Click_2;
 			// 
 			// button2
 			// 
+
 			button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			button2.BackColor = Color.DodgerBlue;
 			button2.FlatStyle = FlatStyle.Flat;
@@ -196,14 +212,17 @@
 			pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 			pictureBox1.TabIndex = 13;
 			pictureBox1.TabStop = false;
+
 			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
+
 			BackColor = Color.FromArgb(174, 217, 255);
 			ClientSize = new Size(1521, 978);
 			Controls.Add(pictureBox1);
+
 			Controls.Add(button3);
 			Controls.Add(button2);
 			Controls.Add(button1);
@@ -216,6 +235,7 @@
 			Controls.Add(label4);
 			Controls.Add(label3);
 			Controls.Add(label2);
+
 			Margin = new Padding(3, 4, 3, 4);
 			Name = "Form1";
 			Text = "Form1";
@@ -227,6 +247,7 @@
 		}
 
 		#endregion
+
 		private Label label2;
 		private Label label3;
 		private Label label4;
@@ -239,6 +260,8 @@
 		private Button button1;
 		private Button button2;
 		private Button button3;
+
 		private PictureBox pictureBox1;
+
 	}
 }

@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			pictureBox1 = new PictureBox();
+
 			label3 = new Label();
 			label1 = new Label();
 			button2 = new Button();
@@ -38,6 +39,7 @@
 			// pictureBox1
 			// 
 			pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
 			pictureBox1.Image = Properties.Resources.Untitled_Project;
 			pictureBox1.Location = new Point(-8, -13);
 			pictureBox1.Name = "pictureBox1";
@@ -88,6 +90,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
+
 			ClientSize = new Size(1413, 684);
 			Controls.Add(button2);
 			Controls.Add(label1);
@@ -101,9 +104,11 @@
 		}
 
 		#endregion
+
 		private PictureBox pictureBox1;
 		private Label label3;
 		private Label label1;
 		private Button button2;
+
 	}
 }

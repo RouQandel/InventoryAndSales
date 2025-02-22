@@ -1,3 +1,4 @@
+
 ﻿using AccessDataLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Presantation
 {
 	public partial class Form1 : Form
 	{
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -20,7 +22,7 @@ namespace Presantation
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -53,6 +55,7 @@ namespace Presantation
 		{
 
 		}
+
 
 		private void button1_Click_2(object sender, EventArgs e)
 		{
