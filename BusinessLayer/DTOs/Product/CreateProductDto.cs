@@ -12,17 +12,3 @@ public class CreateProductDto
     public string SupName { get; set; }
 
 }
-public static class CreateMappingExtensions
-{
-    public static Product ToProduct(this CreateProductDto createProductDto)
-    {
-        return new Product
-        {
-            ProductName = createProductDto.ProductName,
-            UnitPrice = createProductDto.UnitPrice,
-            QuantityInStock = createProductDto.QuantityInStock,
-            Category = createProductDto.Category,
-            SupId = createProductDto.SupId
-        };
-    }
-}
