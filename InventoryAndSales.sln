@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presantation", "D:\desktopApp\Presantation\Presantation.csproj", "{C1B7FF1E-7B87-4615-B64E-1566FD09026E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presantation", "Presantation\Presantation.csproj", "{FDC45A2F-0D97-4F17-8245-1E71B705D109}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
