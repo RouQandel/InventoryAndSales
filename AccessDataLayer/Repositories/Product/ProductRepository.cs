@@ -26,7 +26,8 @@ public class ProductRepository
             UnitPrice = product.UnitPrice,
             QuantityInStock = product.QuantityInStock,
             Category = product.Category ?? CategoryEnum.Other,
-            Orders = product.Orders
+            Orders = product.Orders,
+            Supplier = product.Supplier.SupName == null ? new Supplier { SupName = "Unknown" } : product.Supplier
         };
 
         await _dbContext.Products.AddAsync(newProduct);
@@ -42,6 +43,7 @@ public class ProductRepository
         product.QuantityInStock = updatedProduct.QuantityInStock;
         product.Category = updatedProduct.Category;
         product.Orders = updatedProduct.Orders;
+        product.Supplier.SupName = updatedProduct.Supplier.SupName;
 
         _dbContext.Products.Update(product);
         return true;

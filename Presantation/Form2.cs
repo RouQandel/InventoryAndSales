@@ -1,4 +1,4 @@
-﻿using AccessDataLayer;
+using AccessDataLayer;
 using AccessDataLayer.Entities;
 using AccessDataLayer.Enums;
 using AccessDataLayer.Repositories.Product;
@@ -27,10 +27,10 @@ namespace Presantation
               .Cast<CategoryEnum>()
               .Select(c => new KeyValuePair<string, int>(c.ToString(), (int)c))
               .ToList();
-            // ربط الـ ComboBox بالـ DataSource
+            // ??? ??? ComboBox ???? DataSource
             CategoryForm.DataSource = categoryList;
-            CategoryForm.DisplayMember = "Key"; // يعرض الأسماء فقط
-            CategoryForm.ValueMember = "Value"; // القيم اللي هتترسل لما يتم الاختيار
+            CategoryForm.DisplayMember = "Key"; // ???? ??????? ???
+            CategoryForm.ValueMember = "Value"; // ????? ???? ?????? ??? ??? ????????
 
 
             var categoryList2 = Enum.GetValues(typeof(CategoryEnum))
@@ -172,7 +172,7 @@ namespace Presantation
                 ProductName = productName,
                 UnitPrice = price,
                 QuantityInStock = quantityofproduct,
-                Category = (CategoryEnum)CategoryForm2.SelectedValue,// تحويل الفئة إلى CategoryEnum     SupId = suplierId
+                Category = (CategoryEnum)CategoryForm2.SelectedValue,// ????? ????? ??? CategoryEnum     SupId = suplierId
             };
             // await productManager.UpdateProductAsync(productDto);
             var isupdate = await productManager.UpdateProductAsync(productDto);
@@ -211,7 +211,7 @@ namespace Presantation
         }
         private async void button1_Click_1(object sender, EventArgs e)
         {
-            var dbContext = new AppDbContext();  // تأكد من أن dbContext تم تهيئته بشكل صحيح
+            var dbContext = new AppDbContext();  // ???? ?? ?? dbContext ?? ?????? ???? ????
             var productRepository = new ProductRepository(dbContext);
             var productManager = new ProductManager(productRepository);
             string productName = (string)Name_of_Product.Text.Trim();
@@ -261,7 +261,7 @@ namespace Presantation
                 ProductName = productName,
                 UnitPrice = price,
                 QuantityInStock = quantityofproduct,
-                Category = (CategoryEnum)CategoryForm.SelectedValue,// تحويل الفئة إلى CategoryEnum
+                Category = (CategoryEnum)CategoryForm.SelectedValue,// ????? ????? ??? CategoryEnum
                 SupId = suplierId
             };
             await productManager.AddProductAsync(productDto);

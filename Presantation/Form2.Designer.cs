@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
         /// <summary>
         ///  Required method for Designer support - do not modify
@@ -400,7 +400,7 @@
             ResumeLayout(false);
         }
 
-        #endregion
+		#endregion
 
         private DataGridView dataGridView1;
 		private GroupBox groupBox1;
