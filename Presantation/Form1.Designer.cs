@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			label1 = new Label();
+
 			label2 = new Label();
 			label3 = new Label();
 			label4 = new Label();
@@ -41,41 +41,41 @@
 			button1 = new Button();
 			button2 = new Button();
 			button3 = new Button();
+
+			pictureBox1 = new PictureBox();
+			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			SuspendLayout();
-			// 
-			// label1
-			// 
-			label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label1.Location = new Point(77, 79);
-			label1.Name = "label1";
-			label1.Size = new Size(1272, 93);
-			label1.TabIndex = 0;
-			label1.Text = "This application is designed to efficiently manage product data and orders. It is ideal for businesses looking to keep track of their inventory and streamline their order processing.";
-			label1.Click += label1_Click;
 			// 
 			// label2
 			// 
-			label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label2.Location = new Point(77, 157);
+			label2.Font = new Font("SansSerif", 22.1999989F, FontStyle.Bold, GraphicsUnit.Point, 2);
+			label2.ForeColor = Color.White;
+			label2.Location = new Point(69, 83);
 			label2.Name = "label2";
-			label2.Size = new Size(253, 41);
+			label2.Size = new Size(335, 46);
+
 			label2.TabIndex = 1;
 			label2.Text = " Key Features:";
 			// 
 			// label3
 			// 
 			label3.AutoSize = true;
-			label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label3.Location = new Point(114, 198);
+
+			label3.Font = new Font("SansSerif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 2);
+			label3.ForeColor = Color.White;
+			label3.Location = new Point(114, 151);
 			label3.Name = "label3";
-			label3.Size = new Size(216, 23);
+			label3.Size = new Size(335, 31);
 			label3.TabIndex = 2;
 			label3.Text = "1 - Product Management:";
+			label3.Click += label3_Click;
 			// 
 			// label4
 			// 
-			label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label4.Location = new Point(164, 245);
+			label4.Font = new Font("SansSerif", 16.1999989F);
+			label4.ForeColor = Color.White;
+			label4.Location = new Point(164, 205);
+
 			label4.Name = "label4";
 			label4.Size = new Size(1173, 45);
 			label4.TabIndex = 3;
@@ -84,8 +84,11 @@
 			// 
 			// label5
 			// 
-			label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label5.Location = new Point(164, 290);
+
+			label5.Font = new Font("SansSerif", 16.1999989F);
+			label5.ForeColor = Color.White;
+			label5.Location = new Point(164, 251);
+
 			label5.Name = "label5";
 			label5.Size = new Size(1173, 45);
 			label5.TabIndex = 4;
@@ -93,8 +96,11 @@
 			// 
 			// label6
 			// 
-			label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label6.Location = new Point(164, 335);
+
+			label6.Font = new Font("SansSerif", 16.1999989F);
+			label6.ForeColor = Color.White;
+			label6.Location = new Point(164, 295);
+
 			label6.Name = "label6";
 			label6.Size = new Size(1173, 45);
 			label6.TabIndex = 5;
@@ -102,8 +108,11 @@
 			// 
 			// label7
 			// 
-			label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label7.Location = new Point(164, 380);
+
+			label7.Font = new Font("SansSerif", 16.1999989F);
+			label7.ForeColor = Color.White;
+			label7.Location = new Point(164, 340);
+
 			label7.Name = "label7";
 			label7.Size = new Size(1173, 45);
 			label7.TabIndex = 6;
@@ -112,17 +121,20 @@
 			// label8
 			// 
 			label8.AutoSize = true;
-			label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			label8.Location = new Point(114, 425);
+
+			label8.Font = new Font("SansSerif", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point, 2);
+			label8.ForeColor = Color.White;
+			label8.Location = new Point(114, 395);
 			label8.Name = "label8";
-			label8.Size = new Size(200, 23);
+			label8.Size = new Size(308, 31);
 			label8.TabIndex = 7;
-			label8.Text = "1 - Order Management:";
+			label8.Text = "2 - Order Management:";
 			// 
 			// label9
 			// 
-			label9.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label9.Location = new Point(164, 472);
+			label9.Font = new Font("SansSerif", 16.1999989F);
+			label9.ForeColor = Color.White;
+			label9.Location = new Point(164, 443);
 			label9.Name = "label9";
 			label9.Size = new Size(1173, 45);
 			label9.TabIndex = 8;
@@ -130,8 +142,10 @@
 			// 
 			// label10
 			// 
-			label10.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label10.Location = new Point(164, 517);
+
+			label10.Font = new Font("SansSerif", 16.1999989F);
+			label10.ForeColor = Color.White;
+			label10.Location = new Point(164, 487);
 			label10.Name = "label10";
 			label10.Size = new Size(1173, 45);
 			label10.TabIndex = 9;
@@ -139,37 +153,76 @@
 			// 
 			// button1
 			// 
-			button1.Location = new Point(989, 694);
+
+			button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			button1.BackColor = Color.DodgerBlue;
+			button1.FlatStyle = FlatStyle.Flat;
+			button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+			button1.ForeColor = Color.White;
+			button1.Location = new Point(828, 889);
 			button1.Name = "button1";
-			button1.Size = new Size(94, 29);
+			button1.Size = new Size(135, 56);
 			button1.TabIndex = 10;
 			button1.Text = "Products";
-			button1.UseVisualStyleBackColor = true;
+			button1.UseVisualStyleBackColor = false;
+
 			button1.Click += button1_Click_2;
 			// 
 			// button2
 			// 
-			button2.Location = new Point(1127, 694);
+
+			button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			button2.BackColor = Color.DodgerBlue;
+			button2.FlatStyle = FlatStyle.Flat;
+			button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+			button2.ForeColor = Color.White;
+			button2.Location = new Point(1021, 889);
 			button2.Name = "button2";
-			button2.Size = new Size(94, 29);
+			button2.Size = new Size(136, 56);
 			button2.TabIndex = 11;
 			button2.Text = "Orders";
-			button2.UseVisualStyleBackColor = true;
+			button2.UseVisualStyleBackColor = false;
+			button2.Click += button2_Click_1;
 			// 
 			// button3
 			// 
-			button3.Location = new Point(1273, 694);
+			button3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			button3.BackColor = Color.DodgerBlue;
+			button3.FlatStyle = FlatStyle.Flat;
+			button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+			button3.ForeColor = Color.White;
+			button3.Location = new Point(1220, 889);
 			button3.Name = "button3";
-			button3.Size = new Size(94, 29);
+			button3.Size = new Size(136, 56);
 			button3.TabIndex = 12;
 			button3.Text = "Back";
-			button3.UseVisualStyleBackColor = true;
+			button3.UseVisualStyleBackColor = false;
+			button3.Click += button3_Click_1;
+			// 
+			// pictureBox1
+			// 
+			pictureBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			pictureBox1.BackColor = Color.White;
+			pictureBox1.BackgroundImageLayout = ImageLayout.None;
+			pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+			pictureBox1.Image = Properties.Resources.computer_inventory;
+			pictureBox1.Location = new Point(204, 626);
+			pictureBox1.Name = "pictureBox1";
+			pictureBox1.Size = new Size(412, 319);
+			pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+			pictureBox1.TabIndex = 13;
+			pictureBox1.TabStop = false;
+
 			// 
 			// Form1
 			// 
 			AutoScaleDimensions = new SizeF(8F, 20F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1514, 752);
+
+			BackColor = Color.FromArgb(174, 217, 255);
+			ClientSize = new Size(1521, 978);
+			Controls.Add(pictureBox1);
+
 			Controls.Add(button3);
 			Controls.Add(button2);
 			Controls.Add(button1);
@@ -182,18 +235,19 @@
 			Controls.Add(label4);
 			Controls.Add(label3);
 			Controls.Add(label2);
-			Controls.Add(label1);
+
 			Margin = new Padding(3, 4, 3, 4);
 			Name = "Form1";
 			Text = "Form1";
+			WindowState = FormWindowState.Maximized;
 			Load += Form2_Load;
+			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
 
-		private Label label1;
 		private Label label2;
 		private Label label3;
 		private Label label4;
@@ -206,5 +260,8 @@
 		private Button button1;
 		private Button button2;
 		private Button button3;
+
+		private PictureBox pictureBox1;
+
 	}
 }

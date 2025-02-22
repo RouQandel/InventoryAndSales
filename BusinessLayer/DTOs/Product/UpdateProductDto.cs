@@ -10,5 +10,7 @@ public class UpdateProductDto
     public decimal UnitPrice { get; set; }
     public int QuantityInStock { get; set; }
     public CategoryEnum? Category { get; set; }
+
     public string SupName { get; set; }
+
 }
