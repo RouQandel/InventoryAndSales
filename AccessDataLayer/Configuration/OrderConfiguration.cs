@@ -15,9 +15,9 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.Property(o => o.TotalAmount)
             .IsRequired();
 
-        builder.HasMany(o => o.Products)
-            .WithOne()
-            .OnDelete(DeleteBehavior.Cascade);
+        //builder.HasMany(o => o.Products)
+        //    .WithOne()
+        //    .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(o => o.Customer)
             .WithMany(c => c.Orders) 

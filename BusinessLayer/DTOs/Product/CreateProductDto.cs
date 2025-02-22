@@ -6,7 +6,7 @@ namespace BusinessLayer;
 public class CreateProductDto
 {
     public string ProductName { get; set; } = string.Empty;
-    public long UnitPrice { get; set; }
+    public decimal UnitPrice { get; set; }
     public int QuantityInStock { get; set; }
     public CategoryEnum? Category { get; set; }
     public int SupId { get; set; }
