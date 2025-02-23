@@ -17,7 +17,7 @@ public class ProductManager
     public async Task<List<GetAllProductsDto>> GetAllAsync()
     {
         var products = await _productRepository.GetAllAsync();
-
+       
             // Mapping: Entity → DTO
             return products.Select(p => new GetAllProductsDto
             {
@@ -54,7 +54,6 @@ public class ProductManager
             UnitPrice = productDto.UnitPrice,
             QuantityInStock = productDto.QuantityInStock,
             Category = productDto.Category
-            ,SupId = productDto.Supplier.SupId
     
         };
 

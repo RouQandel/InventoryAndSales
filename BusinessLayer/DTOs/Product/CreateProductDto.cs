@@ -10,6 +10,6 @@ public class CreateProductDto
     public int QuantityInStock { get; set; }
     public CategoryEnum? Category { get; set; }
 
-    public Supplier Supplier { get; set; } =new Supplier();
+    public string SupName { get; set; }
 
 }

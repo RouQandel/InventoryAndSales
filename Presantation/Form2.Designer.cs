@@ -120,6 +120,7 @@
 			Price_0f_Produt.Name = "Price_0f_Produt";
 			Price_0f_Produt.Size = new Size(158, 31);
 			Price_0f_Produt.TabIndex = 4;
+			Price_0f_Produt.TextChanged += Price_0f_Produt_TextChanged;
 			// 
 			// Name_of_Product
 			// 
@@ -128,6 +129,7 @@
 			Name_of_Product.Name = "Name_of_Product";
 			Name_of_Product.Size = new Size(158, 31);
 			Name_of_Product.TabIndex = 3;
+			Name_of_Product.TextChanged += Name_of_Product_TextChanged;
 			// 
 			// label4
 			// 
@@ -463,6 +465,5 @@
 		private Button button4;
 		private Button button5;
 		private Label label5;
-
 	}  
 }

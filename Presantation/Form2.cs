@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Microsoft.EntityFrameworkCore;
 using BusinessLayer.Services.Excel_Handling;
+using AccessDataLayer.Entities;
 
 namespace Presantation
 {
@@ -141,7 +142,7 @@ namespace Presantation
 						var products = await db.Products
 											   //.Include(p => p.Supplier)
 											   .ToListAsync();
-					
+
 						var productDtos = products.Select(p => new GetAllProductsDto
 						{
 							Id = p.ProductId,
@@ -154,17 +155,17 @@ namespace Presantation
 
 						ExcelService excelService = new ExcelService();
 						var FilePath = Path.Combine(selectedPath, "Test.xlsx");
-						excelService.ExportToExcel( productDtos, FilePath);
+						excelService.ExportToExcel(productDtos, FilePath);
 
 
 
 					}
-						//start calling excel method
-						
+					//start calling excel method
+
 
 
 				}
-				
+
 
 
 
@@ -174,7 +175,7 @@ namespace Presantation
 			}
 		}
 
-		
+
 
 		private void LoadProducts(IEnumerable<GetAllProductsDto> products)
 		{
@@ -188,6 +189,9 @@ namespace Presantation
 			var productManager = new ProductManager(productRepository);
 			string productName = (string)Name_of_Product.Text.Trim();
 			string productprice = Price_0f_Produt.Text.Trim();
+
+			//string InputSuppliername = (string)SupplierID.Text.Trim();
+
 			string quantity = Quantity_in_Stock.Text.Trim();
 			// string supId = supIdForm.Text.Trim();
 
@@ -204,6 +208,7 @@ namespace Presantation
 				MessageBox.Show("Plese Enter a Valid number for Price");
 				return;
 			}
+		
 			//convert quantity text to long
 			if (!int.TryParse(quantity, out int quantityofproduct))
 			{
@@ -234,7 +239,10 @@ namespace Presantation
 				UnitPrice = price,
 				QuantityInStock = quantityofproduct,
 				Category = (CategoryEnum)CategoryForm.SelectedValue// ????? ????? ??? CategoryEnum
-																  
+				,
+				//SupName = InputSuppliername
+
+
 			};
 			await productManager.AddProductAsync(productDto);
 			MessageBox.Show("Product added successfully.");
@@ -344,6 +352,7 @@ namespace Presantation
 		{
 			Name_of_Product.Clear();
 			Price_0f_Produt.Clear();
+			SupplierID.Clear();
 			Quantity_in_Stock.Clear();
 			CategoryForm.SelectedIndex = -1;
 			//supIdForm.Clear();
@@ -355,6 +364,21 @@ namespace Presantation
 		}
 
 		private void textBox8_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void textBox1_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Price_0f_Produt_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Name_of_Product_TextChanged(object sender, EventArgs e)
 		{
 
 		}
