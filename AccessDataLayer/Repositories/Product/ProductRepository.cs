@@ -12,7 +12,7 @@ public class ProductRepository
         _dbContext = dbContext;
     }
 
-    public async Task<List<Product>> GetAllAsync() => await _dbContext.Products.ToListAsync();
+    public async Task<List<Product>> GetAllAsync() => await _dbContext.Products.Include(p=>p.Supplier).ToListAsync();
 
     public async Task<Product?> GetByIdAsync(long id) => await _dbContext.Products.FindAsync(id);
 
@@ -30,7 +30,8 @@ public class ProductRepository
             SupId = 1
         };
 
-        await _dbContext.Products.AddAsync(newProduct);
+        await _dbContext.Products
+            .AddAsync(newProduct);
     }
 
     public async Task<bool> UpdateProductByIdAsync(long id, Product updatedProduct)

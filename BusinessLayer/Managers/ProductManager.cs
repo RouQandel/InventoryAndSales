@@ -18,16 +18,17 @@ public class ProductManager
     {
         var products = await _productRepository.GetAllAsync();
 
-        // Mapping: Entity → DTO
-        return products.Select(p => new GetAllProductsDto
-        {
-            Id = p.ProductId,
-            ProductName = p.ProductName,
-            UnitPrice = p.UnitPrice,
-            QuantityInStock = p.QuantityInStock,
-            Category = p.Category.ToString(),
-            SupName = p.Supplier.SupName
-        }).ToList();
+            // Mapping: Entity → DTO
+            return products.Select(p => new GetAllProductsDto
+            {
+                Id = p.ProductId,
+                ProductName = p.ProductName,
+                UnitPrice = p.UnitPrice,
+                QuantityInStock = p.QuantityInStock,
+                Category = p.Category.ToString(),
+                SupName = p.Supplier.SupName
+            }).ToList();
+      
     }
 
     public async Task<GetProductByIdDto?> GetByIdAsync(int id)
@@ -53,6 +54,7 @@ public class ProductManager
             UnitPrice = productDto.UnitPrice,
             QuantityInStock = productDto.QuantityInStock,
             Category = productDto.Category
+            ,SupId = productDto.Supplier.SupId
     
         };
 
