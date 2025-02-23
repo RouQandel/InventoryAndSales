@@ -84,7 +84,8 @@ namespace Presantation
 					UnitPrice = p.UnitPrice,
 					QuantityInStock = p.QuantityInStock,
 					Category = p.Category.ToString(),
-					SupplierName = p.Supplier != null ? p.Supplier.SupName : "Unknown"
+					
+					SupName = p.Supplier.SupName 
 				}).ToList();
 
 

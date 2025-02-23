@@ -26,7 +26,8 @@ public class ProductRepository
             UnitPrice = product.UnitPrice,
             QuantityInStock = product.QuantityInStock,
             Category = product.Category ?? CategoryEnum.Other,
-            Orders = product.Orders
+            Orders = product.Orders,
+            SupId = 1
         };
 
         await _dbContext.Products.AddAsync(newProduct);

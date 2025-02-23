@@ -26,7 +26,7 @@ public class ProductManager
             UnitPrice = p.UnitPrice,
             QuantityInStock = p.QuantityInStock,
             Category = p.Category.ToString(),
-            Supplier = p.Supplier
+            SupName = p.Supplier.SupName
         }).ToList();
     }
 

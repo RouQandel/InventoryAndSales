@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AccessDataLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class test2 : Migration
+    public partial class AddSupplierrr : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

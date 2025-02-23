@@ -9,6 +9,6 @@ public class GetAllProductsDto
     public decimal UnitPrice { get; set; }
     public int QuantityInStock { get; set; }
     public string Category { get; set; } = string.Empty;
-    public Supplier Supplier { get; set; } = new Supplier();
+    public string SupName { get; set; } 
 
 }
