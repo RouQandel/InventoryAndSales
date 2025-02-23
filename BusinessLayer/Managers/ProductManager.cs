@@ -26,7 +26,7 @@ public class ProductManager
             UnitPrice = p.UnitPrice,
             QuantityInStock = p.QuantityInStock,
             Category = p.Category.ToString(),
-            SupplierName = p.Supplier?.SupName ?? "Unknown" // Handling null suppliers
+            Supplier = p.Supplier
         }).ToList();
     }
 
@@ -52,8 +52,8 @@ public class ProductManager
             ProductName = productDto.ProductName,
             UnitPrice = productDto.UnitPrice,
             QuantityInStock = productDto.QuantityInStock,
-            Category = productDto.Category,
-            Supplier= new Supplier { SupName = productDto.SupName }
+            Category = productDto.Category
+    
         };
 
         await _productRepository.AddProductAsync(product);
@@ -70,7 +70,7 @@ public class ProductManager
         existingProduct.UnitPrice = productDto.UnitPrice;
         existingProduct.QuantityInStock = productDto.QuantityInStock;
         existingProduct.Category = productDto.Category;
-        existingProduct.Supplier.SupName = productDto.SupName;
+        existingProduct.Supplier = existingProduct.Supplier;
 
        
         await _productRepository.UpdateProductByIdAsync(existingProduct.ProductId, existingProduct);

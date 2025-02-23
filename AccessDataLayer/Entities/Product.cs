@@ -20,13 +20,13 @@ public class Product
     public CategoryEnum? Category { get; set; } //CategoryEnum type and can be Null
 
 
-    // Navigation Property
+    // Navigation Property  
 
     public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
 
-    [ForeignKey ("Supplier")]
+    [ForeignKey("Supplier")]
     public long SupId { get; set; }
-    public Supplier Supplier { get; set; } = null!;     
+    public Supplier Supplier { get; set; } = null!;
 
 
 }

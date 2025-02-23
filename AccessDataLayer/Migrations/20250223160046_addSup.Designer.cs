@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AccessDataLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250221155401_t1")]
-    partial class t1
+    [Migration("20250223160046_addSup")]
+    partial class addSup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

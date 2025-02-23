@@ -10,12 +10,12 @@ public class GenericRepo<T> : IDeteleRepo<T>, IGetbyIdRepo<T>, IGetAllRepo<T>, I
     where T : class
 {
     private readonly AppDbContext _dbContext;
-    private readonly ILogger<GenericRepo<T>> _logger;
 
-    public GenericRepo(AppDbContext dbContext, ILogger<GenericRepo<T>> logger)
+
+    public GenericRepo(AppDbContext dbContext)
     {
         _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+ 
     }
 
     public async Task<T?> AddAsync(T entity)
@@ -27,14 +27,14 @@ public class GenericRepo<T> : IDeteleRepo<T>, IGetbyIdRepo<T>, IGetAllRepo<T>, I
             await _dbContext.Set<T>().AddAsync(entity);
             return entity;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            _logger.LogError(ex, "{Repo} Add method error: {EntityType}", typeof(T), entity);
-            return null;
+            throw;
         }
-    }
 
-    public async Task<bool> DeleteAsync(long id)
+	}
+
+	public async Task<bool> DeleteAsync(long id)
     {
         var entity = await GetByIdAsync(id);
         if (entity == null) return false;
@@ -71,10 +71,12 @@ public class GenericRepo<T> : IDeteleRepo<T>, IGetbyIdRepo<T>, IGetAllRepo<T>, I
             _dbContext.Set<T>().Update(entity);
             return entity;
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "{Repo} Update method error: {EntityType}", typeof(T));
-            return null;
+		catch (Exception)
+		{
+			
+			throw;
+
+			
         }
     }
 }

@@ -15,8 +15,12 @@ namespace BusinessLayer.Services.Excel_Handling
 
         public void ExportToExcel<T>(ICollection<T> data, string FolderPath)
         {
-            var filePath = Path.Combine(FolderPath, "ExportExcelFile.xlsx");
-            using (var package = new ExcelPackage())
+			ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+			var filePath = Path.Combine(FolderPath, "ExportExcelFile.xlsx");
+			
+
+			using (var package = new ExcelPackage())
             {
                 var worksheet = package.Workbook.Worksheets.Add("Sheet1");
                 PropertyInfo[] properties = typeof(T).GetProperties();

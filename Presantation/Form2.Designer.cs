@@ -31,12 +31,10 @@
 		{
 			dataGridView1 = new DataGridView();
 			groupBox1 = new GroupBox();
-			label9 = new Label();
-			comboBox1 = new ComboBox();
-			textBox4 = new TextBox();
-			textBox3 = new TextBox();
-			textBox2 = new TextBox();
-			textBox1 = new TextBox();
+			CategoryForm = new ComboBox();
+			Quantity_in_Stock = new TextBox();
+			Price_0f_Produt = new TextBox();
+			Name_of_Product = new TextBox();
 			label4 = new Label();
 			label3 = new Label();
 			label2 = new Label();
@@ -44,7 +42,7 @@
 			button1 = new Button();
 			groupBox2 = new GroupBox();
 			label5 = new Label();
-			comboBox2 = new ComboBox();
+			CategoryForm2 = new ComboBox();
 			textBox8 = new TextBox();
 			textBox7 = new TextBox();
 			textBox6 = new TextBox();
@@ -75,16 +73,15 @@
 			dataGridView1.RowHeadersWidth = 51;
 			dataGridView1.Size = new Size(1370, 364);
 			dataGridView1.TabIndex = 0;
+			dataGridView1.CellClick += dataGridView1_CellContentClick;
 			dataGridView1.CellContentClick += dataGridView1_CellContentClick;
 			// 
 			// groupBox1
 			// 
-			groupBox1.Controls.Add(label9);
-			groupBox1.Controls.Add(comboBox1);
-			groupBox1.Controls.Add(textBox4);
-			groupBox1.Controls.Add(textBox3);
-			groupBox1.Controls.Add(textBox2);
-			groupBox1.Controls.Add(textBox1);
+			groupBox1.Controls.Add(CategoryForm);
+			groupBox1.Controls.Add(Quantity_in_Stock);
+			groupBox1.Controls.Add(Price_0f_Produt);
+			groupBox1.Controls.Add(Name_of_Product);
 			groupBox1.Controls.Add(label4);
 			groupBox1.Controls.Add(label3);
 			groupBox1.Controls.Add(label2);
@@ -99,56 +96,38 @@
 			groupBox1.TabStop = false;
 			groupBox1.Text = "Add Product";
 			// 
-			// label9
+			// CategoryForm
 			// 
-			label9.AutoSize = true;
-			label9.Font = new Font("SansSerif", 12F, FontStyle.Bold, GraphicsUnit.Point, 2);
-			label9.Location = new Point(25, 238);
-			label9.Name = "label9";
-			label9.Size = new Size(150, 23);
-			label9.TabIndex = 9;
-			label9.Text = "Supplier Name";
+			CategoryForm.Font = new Font("SansSerif", 12F, FontStyle.Bold);
+			CategoryForm.FormattingEnabled = true;
+			CategoryForm.Location = new Point(207, 283);
+			CategoryForm.Name = "CategoryForm";
+			CategoryForm.Size = new Size(158, 31);
+			CategoryForm.TabIndex = 3;
 			// 
-			// comboBox1
+			// Quantity_in_Stock
 			// 
-			comboBox1.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			comboBox1.FormattingEnabled = true;
-			comboBox1.Location = new Point(207, 283);
-			comboBox1.Name = "comboBox1";
-			comboBox1.Size = new Size(158, 31);
-			comboBox1.TabIndex = 3;
+			Quantity_in_Stock.Font = new Font("SansSerif", 12F, FontStyle.Bold);
+			Quantity_in_Stock.Location = new Point(207, 176);
+			Quantity_in_Stock.Name = "Quantity_in_Stock";
+			Quantity_in_Stock.Size = new Size(158, 31);
+			Quantity_in_Stock.TabIndex = 5;
 			// 
-			// textBox4
+			// Price_0f_Produt
 			// 
-			textBox4.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			textBox4.Location = new Point(207, 230);
-			textBox4.Name = "textBox4";
-			textBox4.Size = new Size(158, 31);
-			textBox4.TabIndex = 6;
+			Price_0f_Produt.Font = new Font("SansSerif", 12F, FontStyle.Bold);
+			Price_0f_Produt.Location = new Point(207, 122);
+			Price_0f_Produt.Name = "Price_0f_Produt";
+			Price_0f_Produt.Size = new Size(158, 31);
+			Price_0f_Produt.TabIndex = 4;
 			// 
-			// textBox3
+			// Name_of_Product
 			// 
-			textBox3.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			textBox3.Location = new Point(207, 176);
-			textBox3.Name = "textBox3";
-			textBox3.Size = new Size(158, 31);
-			textBox3.TabIndex = 5;
-			// 
-			// textBox2
-			// 
-			textBox2.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			textBox2.Location = new Point(207, 122);
-			textBox2.Name = "textBox2";
-			textBox2.Size = new Size(158, 31);
-			textBox2.TabIndex = 4;
-			// 
-			// textBox1
-			// 
-			textBox1.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			textBox1.Location = new Point(207, 72);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(158, 31);
-			textBox1.TabIndex = 3;
+			Name_of_Product.Font = new Font("SansSerif", 12F, FontStyle.Bold);
+			Name_of_Product.Location = new Point(207, 72);
+			Name_of_Product.Name = "Name_of_Product";
+			Name_of_Product.Size = new Size(158, 31);
+			Name_of_Product.TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -204,12 +183,13 @@
 			button1.TabIndex = 3;
 			button1.Text = "Add";
 			button1.UseVisualStyleBackColor = false;
+			button1.Click += button1_Click_1;
 			// 
 			// groupBox2
 			// 
 			groupBox2.Anchor = AnchorStyles.Top;
 			groupBox2.Controls.Add(label5);
-			groupBox2.Controls.Add(comboBox2);
+			groupBox2.Controls.Add(CategoryForm2);
 			groupBox2.Controls.Add(textBox8);
 			groupBox2.Controls.Add(textBox7);
 			groupBox2.Controls.Add(textBox6);
@@ -233,28 +213,30 @@
 			// 
 			label5.AutoSize = true;
 			label5.Font = new Font("SansSerif", 12F, FontStyle.Bold, GraphicsUnit.Point, 2);
-			label5.Location = new Point(33, 235);
+			label5.Location = new Point(33, 122);
 			label5.Name = "label5";
-			label5.Size = new Size(150, 23);
+			label5.Size = new Size(109, 23);
 			label5.TabIndex = 8;
-			label5.Text = "Supplier Name";
+			label5.Text = "Product Id";
+			label5.Click += label5_Click;
 			// 
-			// comboBox2
+			// CategoryForm2
 			// 
-			comboBox2.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			comboBox2.FormattingEnabled = true;
-			comboBox2.Location = new Point(244, 281);
-			comboBox2.Name = "comboBox2";
-			comboBox2.Size = new Size(158, 31);
-			comboBox2.TabIndex = 7;
+			CategoryForm2.Font = new Font("SansSerif", 12F, FontStyle.Bold);
+			CategoryForm2.FormattingEnabled = true;
+			CategoryForm2.Location = new Point(244, 281);
+			CategoryForm2.Name = "CategoryForm2";
+			CategoryForm2.Size = new Size(158, 31);
+			CategoryForm2.TabIndex = 7;
 			// 
 			// textBox8
 			// 
 			textBox8.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			textBox8.Location = new Point(244, 227);
+			textBox8.Location = new Point(244, 118);
 			textBox8.Name = "textBox8";
 			textBox8.Size = new Size(158, 31);
 			textBox8.TabIndex = 7;
+			textBox8.TextChanged += textBox8_TextChanged;
 			// 
 			// textBox7
 			// 
@@ -267,7 +249,7 @@
 			// textBox6
 			// 
 			textBox6.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			textBox6.Location = new Point(244, 122);
+			textBox6.Location = new Point(244, 230);
 			textBox6.Name = "textBox6";
 			textBox6.Size = new Size(158, 31);
 			textBox6.TabIndex = 7;
@@ -304,7 +286,7 @@
 			// 
 			label7.AutoSize = true;
 			label7.Font = new Font("SansSerif", 12F, FontStyle.Bold);
-			label7.Location = new Point(33, 130);
+			label7.Location = new Point(33, 230);
 			label7.Name = "label7";
 			label7.Size = new Size(59, 23);
 			label7.TabIndex = 7;
@@ -334,6 +316,7 @@
 			button2.TabIndex = 0;
 			button2.Text = "Update";
 			button2.UseVisualStyleBackColor = false;
+			button2.Click += button2_Click;
 			// 
 			// groupBox3
 			// 
@@ -382,6 +365,7 @@
 			button3.TabIndex = 0;
 			button3.Text = "Delete";
 			button3.UseVisualStyleBackColor = false;
+			button3.Click += button3_Click;
 			// 
 			// button4
 			// 
@@ -456,20 +440,19 @@
 		private Button button3;
 		private Label label1;
 
-		private TextBox textBox3;
-		private TextBox textBox2;
-		private TextBox textBox1;
+		private TextBox Quantity_in_Stock;
+		private TextBox Price_0f_Produt;
+		private TextBox Name_of_Product;
 		private Label label4;
 		private Label label3;
 		private Label label2;
-		private ComboBox comboBox1;
-		private TextBox textBox4;
+		private ComboBox CategoryForm;
 		private Label label6;
 		private TextBox textBox5;
 		private Label label10;
 		private Label label8;
 		private Label label7;
-		private ComboBox comboBox2;
+		private ComboBox CategoryForm2;
 
 		private TextBox textBox8;
 		private TextBox textBox7;
@@ -479,7 +462,6 @@
 
 		private Button button4;
 		private Button button5;
-		private Label label9;
 		private Label label5;
 
 	}  

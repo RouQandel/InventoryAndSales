@@ -11,11 +11,11 @@ public class CustomerConfguration : IEntityTypeConfiguration<Customer>
 
         builder.Property(c => c.CustomerName)
             .IsRequired()
-            .HasMaxLength(100); 
+            .HasMaxLength(100);
 
         builder.Property(c => c.ContactInfo)
             .IsRequired()
-            .HasMaxLength(100); 
+            .HasMaxLength(100);
 
         builder.HasMany(c => c.Orders)
             .WithOne(o => o.Customer)
